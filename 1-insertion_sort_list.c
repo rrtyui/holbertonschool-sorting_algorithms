@@ -7,10 +7,11 @@
  *
  * Return: void
  */
+
 void insertion_sort_list(listint_t **list)
 {
 
-	listint_t *actual_n;
+	listint_t *actual_n, *new_n;
 
 	actual_n = (*list)->next;
 
@@ -19,7 +20,7 @@ void insertion_sort_list(listint_t **list)
 
 	while (actual_n)
 	{
-		//new_n = (*actual_n).next;
+		new_n = (*actual_n).next;
 		while (actual_n->prev && actual_n->n < actual_n->prev->n)
 		{
 			(actual_n)->prev->next = (actual_n)->next;
@@ -33,7 +34,15 @@ void insertion_sort_list(listint_t **list)
 				(actual_n)->prev = (actual_n)->next->prev;
 				(actual_n)->next->prev = actual_n;
 			}
+			if ((*actual_n).prev)
+			{
+				(*actual_n).prev->next = actual_n;
+			}
+			else
+				(*list) = actual_n;
 			print_list(*list);
 		}
+
+		actual_n = new_n;
 	}
 }
