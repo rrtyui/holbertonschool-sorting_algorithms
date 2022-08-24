@@ -1,8 +1,8 @@
 #include "sort.h"
 
 /**
- * insertion_sort - sorts an array of integers in ascending order using the
- * Insertion sort algorithm
+ * insertion_sort_list - sorts an array of integers in ascending order using an
+ * insertion algorithm
  *@list: struct
  *
  * Return: void
@@ -13,10 +13,10 @@ void insertion_sort_list(listint_t **list)
 
 	listint_t *actual_n, *new_n;
 
-	actual_n = (*list)->next;
-
 	if (list == NULL)
 		return;
+
+	actual_n = (*list)->next;
 
 	while (actual_n)
 	{
@@ -42,7 +42,6 @@ void insertion_sort_list(listint_t **list)
 				(*list) = actual_n;
 			print_list(*list);
 		}
-
 		actual_n = new_n;
 	}
 }
